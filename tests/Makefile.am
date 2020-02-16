@@ -1,3 +1,33 @@
+AM_CPPFLAGS = \
+	$(GLIB_CFLAGS) \
+	$(JSON_CFLAGS) \
+	-I$(abs_top_srcdir)/include
+AM_LDFLAGS = \
+	$(GLIB_LIBS)
+LDADD = \
+	$(abs_top_builddir)/lib/libsatyr.la
+
+check_PROGRAMS = \
+	abrt \
+	cluster \
+	core_thread \
+	gdb_sharedlib \
+	normalize \
+	operating_system \
+	rpm \
+	strbuf
+
+abrt_SOURCES = abrt.c
+cluster_SOURCES = cluster.c
+core_thread_SOURCES = core_thread.c
+gdb_sharedlib_SOURCES = gdb_sharedlib.c
+normalize_SOURCES = normalize.c
+operating_system_SOURCES = operating_system.c
+rpm_SOURCES = rpm.c
+strbuf_SOURCES = strbuf.c
+
+TESTS = $(check_PROGRAMS)
+
 EXTRA_DIST = gdb_stacktraces \
              java_stacktraces \
              ruby_stacktraces \
@@ -50,30 +80,22 @@ TESTSUITE_AT =		\
   local.at 		\
   testsuite.at		\
   utils.at 		\
-  strbuf.at		\
   gdb_frame.at 		\
   gdb_thread.at 	\
   gdb_stacktrace.at  	\
-  gdb_sharedlib.at	\
   java_frame.at 	\
   java_thread.at 	\
   java_stacktrace.at 	\
   koops_frame.at	\
   koops_stacktrace.at   \
-  operating_system.at   \
   core_frame.at         \
-  core_thread.at        \
   core_stacktrace.at    \
   ruby_frame.at		\
   ruby_stacktrace.at	\
   js_platform.at \
   js_frame.at \
   js_stacktrace.at \
-  normalize.at  	\
   metrics.at 		\
-  cluster.at  		\
-  rpm.at		\
-  abrt.at               \
   report.at		\
   python_bindings.at
 
